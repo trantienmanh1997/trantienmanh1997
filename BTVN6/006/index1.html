@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+    
+    .flex-container{
+        display: flex;
+        background-color: green;
+    }
+    .flex-container >div{
+        padding: 20px;
+        margin: 20px;
+        background-color: red;
+        border: 2px solid blue;
+        color: white;
+    }
+
+    </style>
+</head>
+<body>
+    <pre>
+        thuộc tính order áp dụng cho flex item ( các thành phần nằm trong flex-container)
+        thuộc tính order nó sẽ chỉ ra sự sắp xếp của các flex item 
+        oder :0 ; 0 là giá trị mặc định 
+    </pre>
+    <div class="flex-container">
+        <div style="order: 3;">1</div>
+        <div  style="order: 4;">2</div>
+        <div  style="order: 1;">3</div>
+        <div  style="order: 2;">4</div>
+
+    </div>
+</body>
+</html>
