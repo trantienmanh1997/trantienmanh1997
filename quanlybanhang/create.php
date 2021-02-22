@@ -1,7 +1,9 @@
 <?php
 include_once "connect.php" ;
+$errorName = $errorPrice = $errorContent = "";
+
 if(count($_POST)>0){
-    if(isset($_POST["ten_sanpham"]) && isset($_POST["gia"]) && isset($_POST["content"]) ){
+    if(!empty($_POST["ten_sanpham"]) && !empty($_POST["gia"]) && !empty($_POST["content"]) ){
         $ten_sanpham = $_POST["ten_sanpham"];
         $gia = $_POST["gia"];
         $content = $_POST["content"];
@@ -11,11 +13,28 @@ if(count($_POST)>0){
 
         header('location:index.php');
         exit();
+    } else {
+        
+        if(empty($_POST["ten_sanpham"])){
+            $errorName="Vui lòng nhập tên sản phẩm";
+        }else{
+            $errorName="";
+        }
+    
+        if(empty($_POST["gia"])){
+            $errorPrice="Vui lòng nhập giá sản phẩm";
+        }else{
+            $errorPrice="";
+        }
+        if(empty($_POST["content"])){
+            $errorContent = "Vui lòng nhập chi tiết sản phẩm";
+        }else{
+            $errorContent = "";
+        }
+       
+       
     }
-
-
-
-
+  
 }
 
 
@@ -40,22 +59,22 @@ if(count($_POST)>0){
     <div class="container">
         <div class= "row">
             <div class="col-md-12">
-                <form action="" method="post"  >
+                <form action="" method="post" enctype="multipart/form-data" >
                    
                         <h1>Thêm sản phẩm mới</h1>
                         <label for="">Tên sản phẩm</label><br>
                         <input type="text" name="ten_sanpham" id=""><br>
+                        <span style="color:red"><?php echo $errorName?></span><br>
                         <label for="">Giá</label><br>
                         <input type="text" name="gia" id=""><br>
+                        <span style="color:red"><?php echo $errorPrice?></span><br>
                        <label for="">Ảnh sản phẩm</label><br>
                         <input type="file" name="fileToUpload" id="fileToUpload"><br>
                         <label for="">Chi tiết sản phẩm</label><br>
                        <textarea name="content" id="" cols="30" rows="10"></textarea><br>
-                       <Button style="background-color:green; color: white" type="submit">Save</Button>
+                       <span style="color:red"><?php echo $errorContent?></span><br>
+                       <Button name='submit' style="background-color:green; color: white" type="submit">Save</Button>
                        <Button type="reset">Reset</Button>
-                
-                   
-                
                 </form>
             
             </div>
