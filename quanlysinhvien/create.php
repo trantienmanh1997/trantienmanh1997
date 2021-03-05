@@ -2,39 +2,40 @@
 include_once "connect.php";
 $errorName = $errorAge = $errorContent = "";
 if(count($_POST)>0){
-    if(!empty($_POST["namesv"]) && !empty($_POST["age"]) && !empty($_POST["avatar"]) && !empty($_POST["content"])){
+    if(!empty($_POST["namesv"]) && !empty($_POST["age"]) && !empty($_POST["content"])) {
         $namesv = $_POST["namesv"];
         $age = $_POST["age"];
-        $avatar = $_POST["avatar"];
+       
         $content = $_POST["content"];
         
-        $sql = "INSERT INTO students(namesv,age,avatar,content) VALUES('$namesv','$age','$avatar,'$content')";
+        $sql = "INSERT INTO students(namesv,age,content) VALUES('$namesv','$age','$content')";
          $connection->exec($sql);
          echo $sql;
          header('location:index.php');
          exit();
     }
-    // }else{
-    //     if(empty($_POST["namesv"])){
-    //         $errorName = "Vui lòng điền tên";
-    //     }else{
-    //         $errorName = "";
-    //     }
-    //     if(empty($_POST["age"])){
-    //         $errorAge = "Vui lòng điền tuổi";
-    //     }else{
-    //         $errorAge = "";
-    //     }
-    //     if(empty($_POST["content"])){
-    //         $errorContent = "Vui lòng điền thông tin chi tiết";
-    //     }else{
-    //         $errorContent = "";
-    //     }
+    else{
+        if(empty($_POST["namesv"])){
+            $errorName = "Vui lòng điền tên";
+        }else{
+            $errorName = "";
+        }
+        if(empty($_POST["age"])){
+            $errorAge = "Vui lòng điền tuổi";
+        }else{
+            $errorAge = "";
+        }
+        if(empty($_POST["content"])){
+            $errorContent = "Vui lòng điền thông tin chi tiết";
+        }else{
+            $errorContent = "";
+        }
     
-    // }
-
-
+    }
 }
+
+
+
 
 
 ?>

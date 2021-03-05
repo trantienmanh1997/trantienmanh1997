@@ -49,8 +49,8 @@ include_once "connect.php";
        <td><?php echo $data["content"]?></td>
        <td><?php echo $data["ngay_tao"]?></td>
         <td>
-        <a href="">Sửa</a>
-        <a href="">Xóa</a>
+        <a href="edit.php?id=<?php echo $data["id"]?>">Sửa</a>
+        <a onclick = "confirmDelete('delelte.php')"  href="delete.php?id=<?php echo $data["id"]?>">Xóa</a>
         </td>
         </tr>
 
@@ -63,5 +63,18 @@ include_once "connect.php";
 </table>
 
 </div>
+<script>
+function confirmDelete(link){
+    var txt;
+  var r = confirm("Bạn chắc chắn muốn xóa");
+  if (r == true) {
+    window.location.href=link
+  } else {
+    
+  }
+
+}
+
+</script>
 </body>
 </html>
