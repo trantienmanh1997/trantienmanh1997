@@ -15,6 +15,12 @@ include_once "connect.php";
 <?php
 
  $sql = "SELECT * FROM students";
+ $keyword = "";
+ if(isset($_POST["keyword"]) && (strlen($_POST["keyword"]) >0 )){
+    $keyword = $_POST["keyword"];
+  $sql = "SELECT * FROM students WHERE namesv LIKE '%$keyword%'";
+
+ }
 
  $stmt = $connection->prepare($sql);
  $stmt->execute();
@@ -25,6 +31,17 @@ include_once "connect.php";
 <div class ="container">
 <h1>Danh sách sinh viên</h1>
 <a href="create.php">Thêm sinh viên</a>
+<div>
+  <form action="" name="search" method="post">
+    <input type="text" name="keyword" value="<?php echo $keyword?>" placeholder="Nhập từ khóa tìm kiếm">
+    <button class="btn btn-success" type="submit">Tìm kiếm</button>
+  
+  </form>
+
+</div>
+
+
+</form>
 <table class="table">
   <thead>
     <tr>
